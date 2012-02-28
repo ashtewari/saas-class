@@ -13,6 +13,20 @@ class Hw1
 		input == input.reverse
     
 	end
+  
+  def count_words(string)
+    if(string == nil || string.length == 0) 
+      return nil 
+    end  
+    
+    input = string.downcase.gsub(/\W/, ' ')
+    
+    table = Hash.new(0)    
+    input.split.each { |word| table[word]+=1}
+    
+    return table
+  end  
+  
 end
 
 
@@ -22,8 +36,46 @@ end
 
 
 # Unit tests
+# todo - setup and teardown
+#      - data driven tests/assertions
 
 require 'test/unit'
+
+class CountWordsTest < Test::Unit::TestCase
+
+  def test_case_1
+    target = Hw1.new
+    
+    result = target.count_words("A man, a plan, a canal -- Panama") 
+  # => {'a' => 3, 'man' => 1, 'canal' => 1, 'panama' => 1, 'plan' => 1}   
+
+    assert_not_nil(result)
+    assert_kind_of(Hash, result)
+    assert_equal(5, result.length)
+    assert_equal(5, result.keys.length)
+    assert_equal('a', result.keys[0])
+    assert_equal(1, result['plan'])
+    
+  end
+
+
+  def test_case_1
+    target = Hw1.new
+   
+    result = target.count_words("Doo bee doo bee doo")  
+    # => {'doo' => 3, 'bee' => 2}
+
+    assert_not_nil(result)
+    assert_kind_of(Hash, result)
+    assert_equal(2, result.length)
+    assert_equal(2, result.keys.length)
+    assert_equal('doo', result.keys[0])
+    assert_equal(2, result['bee'])
+    
+  end
+
+  
+end
 
 class PalindromeTest < Test::Unit::TestCase
 
