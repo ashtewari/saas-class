@@ -22,7 +22,7 @@ class Hw1
     input = string.downcase.gsub(/\W/, ' ')
     
     table = Hash.new(0)    
-    input.split.each { |word| table[word]+=1}
+    input.split.each { |word| table[word]+=1 }
     
     return table
   end  
