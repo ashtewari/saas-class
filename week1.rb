@@ -59,7 +59,7 @@ class CountWordsTest < Test::Unit::TestCase
   end
 
 
-  def test_case_1
+  def test_case_2
     target = Hw1.new
    
     result = target.count_words("Doo bee doo bee doo")  
